@@ -67,6 +67,7 @@ export default function Home() {
         image: 'https://images.unsplash.com/photo-1625774613123-d9ef02f725fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
         title: '4 tips of making decision before purchased',
     }]
+    let categories = ['ALL', 'SPORTS', 'SNACKS', 'AUTOMOTIVES']
 
     return (
         <ScrollView>
@@ -122,6 +123,7 @@ export default function Home() {
                     <Text style={{
                         fontSize: 20,
                         paddingEnd: 170,
+                        fontWeight: 'bold'
                     }}>Meet Socialty</Text>
                     <Text style={{
                         color: 'red',
@@ -144,7 +146,7 @@ export default function Home() {
                                         flexDirection: 'row',
                                         justifyContent: 'space-around',
                                         marginHorizontal: 10
-                                    }}>  
+                                    }}>
                                         <View style={{
                                             marginTop: 15
                                         }}>
@@ -266,7 +268,8 @@ export default function Home() {
                 }}>
                     <Text style={{
                         fontSize: 20,
-                        paddingEnd: 210
+                        paddingEnd: 210,
+                        fontWeight: 'bold'
                     }}>
                         Ratings
                     </Text>
@@ -277,7 +280,21 @@ export default function Home() {
                         See All
                     </Text>
                 </View>
-               {/* Cards */}
+                {/* Categories */}
+                <View style={{ marginTop: 10 }}>
+                    <ScrollView horizontal>
+                        {
+                            categories.map((category, idx) => (
+                                <Text
+                                    key={idx}
+                                    style={{padding: 10, fontSize: 20, fontWeight: 'bold'}}>
+                                    {category}
+                                </Text>
+                            ))
+                        }
+                    </ScrollView>
+                </View>
+                {/* Cards */}
                 <View style={{
                     marginTop: 20
                 }}>
@@ -371,7 +388,8 @@ export default function Home() {
                 }}>
                     <Text style={{
                         fontSize: 20,
-                        paddingEnd: 220
+                        paddingEnd: 220,
+                        fontWeight: 'bold'
                     }}>Perks</Text>
                     <Text style={{
                         color: 'red',
@@ -465,7 +483,8 @@ export default function Home() {
                 }}>
                     <Text style={{
                         fontSize: 20,
-                        paddingEnd: 200
+                        paddingEnd: 200,
+                        fontWeight: 'bold'
                     }}>Journal</Text>
                     <Text style={{
                         color: 'red',
