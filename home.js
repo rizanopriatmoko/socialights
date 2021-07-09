@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Alert, Image, ScrollView, Dimensions } from 'react-native';
 import { Appbar, TextInput, Card, Title, Paragraph, Button } from "react-native-paper";
-
-
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function Home() {
     const theme = {
@@ -111,9 +110,10 @@ export default function Home() {
             </View>
             {/* socialty sliders */}
             <View style={{
-                backgroundColor: '#E5E4E2',
+                backgroundColor: '#f2f2f2',
                 paddingVertical: 20
             }}>
+                {/* Title */}
                 <View style={{
                     flexDirection: 'row',
                     marginTop: 20,
@@ -130,6 +130,7 @@ export default function Home() {
                         Learn
                     </Text>
                 </View>
+                {/* cards */}
                 <View style={{
                     marginTop: 20
                 }}>
@@ -138,11 +139,12 @@ export default function Home() {
                             channels.map((channel, idx) => (
                                 <Card style={{ width: width * 0.6, margin: 10, marginHorizontal: 10 }} key={idx} >
                                     <Card.Cover source={{ uri: `${channel.image}` }} />
+                                    {/* 1st line */}
                                     <View style={{
                                         flexDirection: 'row',
                                         justifyContent: 'space-around',
                                         marginHorizontal: 10
-                                    }}>
+                                    }}>  
                                         <View style={{
                                             marginTop: 15
                                         }}>
@@ -167,6 +169,7 @@ export default function Home() {
                                                 height: 30
                                             }}></Image>
                                     </View>
+                                    {/* 2nd Line (percentage) */}
                                     <View style={{
                                         flexDirection: 'row',
                                         justifyContent: 'space-around',
@@ -190,6 +193,7 @@ export default function Home() {
                                             }}>Influence</Text>
                                         </View>
                                     </View>
+                                    {/* 3rd Line (Icons) */}
                                     <View style={{
                                         flexDirection: 'row',
                                         justifyContent: 'space-around',
@@ -227,6 +231,7 @@ export default function Home() {
                                                 height: 50
                                             }}></Image>
                                     </View>
+                                    {/* 4th Line */}
                                     <View style={{
                                         flexDirection: 'row',
                                         justifyContent: 'space-around',
@@ -250,9 +255,10 @@ export default function Home() {
             </View>
             {/* Ratings Slider */}
             <View style={{
-                backgroundColor: '#C0C0C0',
+                backgroundColor: '#e4e4e4',
                 paddingVertical: 20
             }}>
+                {/* Title */}
                 <View style={{
                     flexDirection: 'row',
                     marginTop: 20,
@@ -271,77 +277,84 @@ export default function Home() {
                         See All
                     </Text>
                 </View>
+               {/* Cards */}
                 <View style={{
                     marginTop: 20
                 }}>
                     <ScrollView horizontal style={{ width }}>
                         {
                             ratings.map((rating, idx) => (
-                                <View style={{ backgroundColor: 'green', width: width * 0.7, margin: 10, marginHorizontal: 10, borderRadius: 10 }}>
-                                    <Card style={{}} key={idx} >
-                                        <Card.Cover source={{ uri: `${rating.image}` }} />
-                                        <View style={{
-                                            flexDirection: 'row',
-                                            marginHorizontal: 10
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 20,
-                                                fontWeight: 'bold',
-                                                marginTop: 10
-                                            }}>4.8</Text>
-                                            <Image
-                                                source={{ uri: 'data:image/png;base64,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' }}
-                                                style={{
-                                                    marginTop: 15,
-                                                    marginLeft: 5,
-                                                    width: 20,
-                                                    height: 20
-                                                }}></Image>
-                                        </View>
-                                        <Text style={{ marginLeft: 10, fontSize: 13 }}>(114k Reviews)</Text>
-                                        <Text style={{ marginLeft: 10, fontSize: 14, marginTop: 20 }}>{rating.brand}</Text>
-                                        <Text style={{ marginLeft: 10, fontSize: 23, marginBottom: 20, fontWeight: 'bold' }}>{rating.Stuff}</Text>
-                                    </Card>
-                                    <View style={{ marginHorizontal: 5 }}>
-                                        <Text style={{ margin: 10, color: 'white', fontSize: 12 }}>Today, 5:30 pm</Text>
-                                        <Text style={{ marginTop: 10, marginHorizontal: 10, color: 'white', fontSize: 19 }}>"HereGoes The Users' Shoutout Message"</Text>
-                                        <Text style={{ marginTop: 2, marginBottom: 15, marginHorizontal: 10, color: 'white', fontSize: 11 }}>Shoutout on Rating_Parameter</Text>
-                                        <View style={{
-                                            flexDirection: 'row',
-                                            marginHorizontal: 10
-                                        }}>
+
+                                <View style={{ width: width * 0.7, margin: 10, marginHorizontal: 10, borderRadius: 10 }}>
+                                    <LinearGradient colors={['#81cb2d', '#bad224']} style={{ borderRadius: 10 }}>
+                                        <Card style={{}} key={idx} >
+                                            <Card.Cover source={{ uri: `${rating.image}` }} />
+                                            {/* 1st line (rating) */}
                                             <View style={{
                                                 flexDirection: 'row',
-                                                justifyContent: 'space-around',
-                                                marginLeft: 10
+                                                marginHorizontal: 10
                                             }}>
+                                                <Text style={{
+                                                    fontSize: 20,
+                                                    fontWeight: 'bold',
+                                                    marginTop: 10
+                                                }}>4.8</Text>
                                                 <Image
-                                                    source={{ uri: 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png' }}
+                                                    source={{ uri: 'data:image/png;base64,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' }}
                                                     style={{
-                                                        marginTop: 1,
-                                                        width: 28,
-                                                        height: 28
-                                                    }}></Image>
-                                                <Image
-                                                    source={{ uri: 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png' }}
-                                                    style={{
-                                                        marginTop: 1,
-                                                        width: 28,
-                                                        height: 28
-                                                    }}></Image>
-                                                <Image
-                                                    source={{ uri: 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png' }}
-                                                    style={{
-                                                        marginTop: 1,
-                                                        width: 28,
-                                                        height: 28
+                                                        marginTop: 15,
+                                                        marginLeft: 5,
+                                                        width: 20,
+                                                        height: 20
                                                     }}></Image>
                                             </View>
-                                            <Text style={{ margin: 10, marginBottom: 18, color: 'white', fontSize: 10 }}>User & 10 Others agree</Text>
+                                            <Text style={{ marginLeft: 10, fontSize: 13 }}>(114k Reviews)</Text>
+                                            <Text style={{ marginLeft: 10, fontSize: 14, marginTop: 20 }}>{rating.brand}</Text>
+                                            <Text style={{ marginLeft: 10, fontSize: 23, marginBottom: 20, fontWeight: 'bold' }}>{rating.Stuff}</Text>
+                                        </Card>
+                                        {/* Text outside card */}
+                                        <View style={{ marginHorizontal: 5 }}>
+                                            <Text style={{ margin: 10, color: 'white', fontSize: 12 }}>Today, 5:30 pm</Text>
+                                            <Text style={{ marginTop: 10, marginHorizontal: 10, color: 'white', fontSize: 19 }}>"HereGoes The Users' Shoutout Message"</Text>
+                                            <Text style={{ marginTop: 2, marginBottom: 15, marginHorizontal: 10, color: 'white', fontSize: 11 }}>Shoutout on Rating_Parameter</Text>
+                                            {/* last Line */}
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                marginHorizontal: 10
+                                            }}>
+                                                <View style={{
+                                                    flexDirection: 'row',
+                                                    justifyContent: 'space-around',
+                                                    marginLeft: 10
+                                                }}>
+                                                    <Image
+                                                        source={{ uri: 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png' }}
+                                                        style={{
+                                                            marginTop: 1,
+                                                            width: 28,
+                                                            height: 28
+                                                        }}></Image>
+                                                    <Image
+                                                        source={{ uri: 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png' }}
+                                                        style={{
+                                                            marginTop: 1,
+                                                            width: 28,
+                                                            height: 28
+                                                        }}></Image>
+                                                    <Image
+                                                        source={{ uri: 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png' }}
+                                                        style={{
+                                                            marginTop: 1,
+                                                            width: 28,
+                                                            height: 28
+                                                        }}></Image>
+                                                </View>
+                                                <Text style={{ margin: 10, marginBottom: 18, color: 'white', fontSize: 10 }}>User & 10 Others agree</Text>
+                                            </View>
                                         </View>
-                                    </View>
-
+                                    </LinearGradient>
                                 </View>
+
                             ))
                         }
                     </ScrollView>
@@ -350,6 +363,7 @@ export default function Home() {
             </View>
             {/* Perks */}
             <View style={{ paddingVertical: 20 }}>
+                {/* Title */}
                 <View style={{
                     flexDirection: 'row',
                     marginTop: 20,
@@ -366,6 +380,7 @@ export default function Home() {
                         See All
                     </Text>
                 </View>
+                {/* 1st Images */}
                 <View style={{
                     flexDirection: 'row',
                     justifyContent: 'space-around',
@@ -383,6 +398,7 @@ export default function Home() {
                         <Image source={{ uri: 'https://www.scmedia.id/wp-content/uploads/2021/03/cover.-2.jpg' }} style={{ height: 61, borderRadius: 10, width: 90 }}></Image>
                     </View>
                 </View>
+                {/* 1st Caption */}
                 <View style={{
                     flexDirection: 'row',
                     marginHorizontal: 10,
@@ -400,7 +416,7 @@ export default function Home() {
                             height: 30
                         }}></Image>
                 </View>
-
+                {/* 2nd Images */}
                 <View style={{
                     flexDirection: 'row',
                     justifyContent: 'space-around',
@@ -419,6 +435,7 @@ export default function Home() {
                         <Image source={{ uri: 'https://asset.kompas.com/crops/PnF2brZE4G8t18mJ1w2tGUpHyc0=/79x14:847x526/750x500/data/photo/2018/01/24/1896525141.jpg' }} style={{ height: 61, borderRadius: 10, width: 90 }}></Image>
                     </View>
                 </View>
+                {/* 2nd Caption */}
                 <View style={{
                     flexDirection: 'row',
                     marginHorizontal: 10,
@@ -440,6 +457,7 @@ export default function Home() {
             </View>
             {/* Journal */}
             <View style={{ backgroundColor: '#E5E4E2', paddingBottom: 300 }}>
+                {/* Title */}
                 <View style={{
                     flexDirection: 'row',
                     marginTop: 25,
@@ -456,6 +474,7 @@ export default function Home() {
                         See All
                     </Text>
                 </View>
+                {/* Cards */}
                 <View style={{ marginTop: 30 }}>
                     <ScrollView horizontal>
                         {
